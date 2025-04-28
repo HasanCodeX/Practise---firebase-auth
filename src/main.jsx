@@ -5,16 +5,24 @@ import App from './App.jsx';
 import {
   createBrowserRouter,
   RouterProvider,
-} from 'react-router'; // Use react-router (not react-router-dom)
-import Root from './layout/root.jsx'; // ✅ Use .jsx
-
+} from 'react-router'; // Using react-router (core package)
+import Root from './layout/root.jsx';
+import Home from './components/home/home.jsx';
+import Login from './components/login/login.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />, // Use element with JSX
+    element: <Root />, // Note: 'element' is correct (not 'Components')
     children: [
-      // Add child routes here if needed
+      {
+        index: true,
+        element: <Home />
+      },
+      { 
+        path: "login",
+        element: <Login />
+      },
     ],
   },
 ]);
